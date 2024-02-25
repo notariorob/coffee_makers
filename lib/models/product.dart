@@ -17,4 +17,12 @@ class Product {
     required this.image,
     required this.category,
   });
+
+  Product.fromJson(Map<String, dynamic> json)
+      : id = json['id'],
+        name = json['name'],
+        description = json['description'],
+        price = json['price'].toDouble(),
+        image = json['image'],
+        category = json['category'];
 }
