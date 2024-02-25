@@ -1,18 +1,17 @@
-import 'package:coffee_makers/models/product.dart';
+import 'package:coffee_makers/models/cart_item.dart';
 import 'package:flutter/material.dart';
 
-class MenuItem extends StatelessWidget {
-  const MenuItem({super.key, required this.product, required this.onAdd});
+class OrderItem extends StatelessWidget {
+  const OrderItem({super.key, required this.item});
 
-  final Product product;
-  final Function onAdd;
+  final CartItem item;
 
   @override
   Widget build(BuildContext context) {
     return Card(
         child: Column(
       children: [
-        Image.network(product.imageUrl),
+        Image.network(item.product.imageUrl),
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -21,14 +20,11 @@ class MenuItem extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(product.name),
-                  Text('\$${product.price.toStringAsFixed(2)}'),
+                  Text(item.product.name),
+                  Text('\$${item.product.price.toStringAsFixed(2)}'),
                 ],
               ),
-              ElevatedButton(
-                onPressed: () => onAdd(product),
-                child: const Text('Add'),
-              ),
+              Text(item.quantity.toString()),
             ],
           ),
         ),
