@@ -1,3 +1,4 @@
+import 'package:coffee_makers/data_manager.dart';
 import 'package:coffee_makers/screens/menu_screen.dart';
 import 'package:coffee_makers/screens/offers_screen.dart';
 import 'package:coffee_makers/screens/order_screen.dart';
@@ -33,17 +34,24 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int selectedBottomBarIndex = 0;
+  final DataManager dataManager = DataManager();
 
   Widget getSelectedScreen() {
     switch (selectedBottomBarIndex) {
       case 0:
-        return const MenuScreen();
+        return MenuScreen(
+          dataManager: dataManager,
+        );
       case 1:
         return const OffersScreen();
       case 2:
-        return const OrderScreen();
+        return OrderScreen(
+          dataManager: dataManager,
+        );
       default:
-        return const MenuScreen();
+        return MenuScreen(
+          dataManager: dataManager,
+        );
     }
   }
 
