@@ -104,6 +104,13 @@ List<dynamic> mockJsonResponse = [
 class DataManager {
   List<Product>? _products;
   final List<CartItem> _cart = [];
+  static final DataManager _instance = DataManager._internal();
+
+  DataManager._internal();
+
+  factory DataManager() {
+    return _instance;
+  }
 
   List<CartItem> get cart => _cart;
 
